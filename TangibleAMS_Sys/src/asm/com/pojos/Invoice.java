@@ -1,4 +1,4 @@
-/*package asm.com.pojos;
+package asm.com.pojos;
 
 
 import java.io.Serializable;
@@ -50,13 +50,11 @@ public class Invoice implements Serializable {
  @JoinColumn(name="manufacturer")
  private Manufacturer manufacturer;
  
- public Invoice() {
-
- }
+ public Invoice() {}
 
 
 
- *//**
+ /**
  * @param invoiceId
  * @param orderDate
  * @param deliveryDate

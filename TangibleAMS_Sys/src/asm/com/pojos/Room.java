@@ -1,8 +1,10 @@
 package asm.com.pojos;
 
 import java.io.Serializable;
+import java.nio.MappedByteBuffer;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +19,6 @@ import javax.persistence.Table;
 @Table(name = "Room")  
 public class Room {
 
-		public long getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(long roomId) {
-		this.roomId = roomId;
-	}
 
 		//@XmlAttribute
 		@Id
@@ -45,7 +40,11 @@ public class Room {
 		@JoinColumn(name="department_id")
 		private Department department;
 
+		@OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
+		private Set<Asset>asset;
 		
+		public Room()
+		{}
 
 		public Room(String roomName, String description,Department department) {
 			super();
@@ -54,6 +53,7 @@ public class Room {
 			this.department = department;
 		}
 
+		
 		public String getRoomName() {
 			return roomName;
 		}
@@ -78,6 +78,21 @@ public class Room {
 			this.department = department;
 		}
 
-		
+		public long getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
+	}
+
+	public Set<Asset> getAsset() {
+		return asset;
+	}
+
+	public void setAsset(Set<Asset> asset) {
+		this.asset = asset;
+	}
+
 		
 }

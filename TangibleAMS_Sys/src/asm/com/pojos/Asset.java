@@ -1,4 +1,4 @@
-/*package asm.com.pojos;
+package asm.com.pojos;
 
 import java.sql.Date;
 import java.util.List;
@@ -103,6 +103,7 @@ public class Asset {
 			
 	//joining InvoiceDS table with Asset table
 	@ManyToOne()
+	@JoinColumn(name = "invoiceId")
 	private Invoice invoice;
 	
 	@ManyToOne()
@@ -239,48 +240,48 @@ public class Asset {
 
 
 
-	*//**
+	/**
 	 * @return the assetstatus
-	 *//*
+	 */
 	public AssetStatus getAssetstatus() {
 		return assetstatus;
 	}
 
-	*//**
+	/**
 	 * @param assetstatus the assetstatus to set
-	 *//*
+	 */
 	public void setAssetstatus(AssetStatus assetstatus) {
 		this.assetstatus = assetstatus;
 	}
 
 	
 
-	*//**
+	/**
 	 * @return the manufacturer
-	 *//*
+	 */
 	public Manufacturer getManufacturer() {
 		return manufacturer;
 	}
 
-	*//**
+	/**
 	 * @param manufacturer the manufacturer to set
-	 *//*
+	 */
 	public void setManufacturer(Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
 
 
-	*//**
+	/**
 	 * @return the category
-	 *//*
+	 */
 	public Category getCategory() {
 		return category;
 	}
 
-	*//**
+	/**
 	 * @param category the category to set
-	 *//*
+	 */
 	public void setCategory(Category category) {
 		this.category = category;
 	}
@@ -288,4 +289,3 @@ public class Asset {
 	
 	
 }
-*/

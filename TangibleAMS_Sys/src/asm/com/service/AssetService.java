@@ -13,7 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import asm.com.dao.AssetDao;
 import asm.com.pojos.Account;
+import asm.com.pojos.Asset;
 import asm.com.pojos.AssetStatus;
 import asm.com.pojos.Category;
 import asm.com.pojos.Department;
@@ -46,34 +48,26 @@ public class AssetService {
 		@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 		@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 		
-		public Asset(String assetName, String assetModelNo, String serialNum,
-				float amountPaid, String color, float currentValue,
-				String description, int numberOfYearToUse, Date purchasedDate,
-				double size, float valueToSellWaste, Date warrantyExpire,
-				String warrantlyType, Room room, AssetStatus assetstatus,
-				Manufacturer manufacturer, Invoice invoice, Insurance insurance,
-				Category category) {fYearToUse, float valueToSellWaste, Date warrantyExpire,
-				String warrantlyType) 
 		
-		/*public void updateEmployee(long empId,String empIDNum, String empName,
-				String empSurname, String empTitle, Date birthDate,
-				String address, String city, String homePhone, String cellPhone,
-				String email, String role, Department department,
-				Account account) */
 		
-		public void update(@PathParam("asset_Id") long id,@PathParam("asset_Name") float currentValue,@PathParam("empName") String empName,@PathParam("empSurname") 
-        String empSurname,@PathParam("empTitle") String empTitle,@PathParam("birthDate") Date birthDate,
-        @PathParam("address")String address,@PathParam("city")String city,
-        @PathParam("homePhone")String homePhone,@PathParam("cellPhone")String cellPhone,
-        @PathParam("email")String email,@PathParam("role")String role,
-        @PathParam("department")Department department,@PathParam("account")Account account){
 		
-		/*String adminName, String adminSurname,
-	String adminEmail, String adminPassword, String adminIdNr*/
+		
+		public void update(@PathParam("assetId") long assetId,@PathParam("assetName") String assetName,@PathParam("assetModelNo") String assetModelNo,@PathParam("serialNum") 
+        String serialNum,@PathParam("amountPaid") float amountPaid,@PathParam("color") String color,
+        @PathParam("currentValue") float currentValue,@PathParam("description")String description,
+        @PathParam("numberOfYearToUse") int numberOfYearToUse,@PathParam("purchasedDate") Date purchasedDate,
+        @PathParam("size") double size,@PathParam("valueToSellWaste") float valueToSellWaste,
+        @PathParam("warrantyExpire") Date warrantyExpire,@PathParam("warrantlyType") String warrantlyType,  @PathParam("room") Room room,@PathParam("assetstatus") AssetStatus assetstatus,
+        @PathParam("manufacturer") Manufacturer manufacturer,@PathParam("invoice") Invoice invoice,
+        @PathParam("insurance") Insurance insurance,@PathParam("category") Category category){
+		
+	
 			
-			empDoa = new EmployeeDao();
+			assDoa = new AssetDao();
 
-			empDoa.updateEmployee(empId, empIDNum, empName, empSurname, empTitle, birthDate, address, city, homePhone, cellPhone, email, role, department,account);
+			assDoa.updateAsset(assetId, currentValue, description, numberOfYearToUse, valueToSellWaste, warrantyExpire, warrantlyType);
+			
+			//empDoa.updateEmployee(empId, empIDNum, empName, empSurname, empTitle, birthDate, address, city, homePhone, cellPhone, email, role, department,account);
 		}
 
 		//for deleting
@@ -82,9 +76,9 @@ public class AssetService {
 		@Path("{id}")
 		@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 		@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-		public void remove(@PathParam("empId") Long empId) {
-			empDoa = new EmployeeDao();
-			empDoa.deleteEmployee(empId);
+		public void remove(@PathParam("assetId") Long assetId) {
+			assDoa = new AssetDao();
+//			assDoa.deleteAsset(assetId);
 		}
 
 		
@@ -94,9 +88,9 @@ public class AssetService {
 		 @GET
 		 @Path("/Retrieve")
 		 @Produces({ MediaType.APPLICATION_JSON})
-		 public List<Employee> findAll() {
-		   empDoa = new EmployeeDao();
-		  return empDoa.listEmployee();
+		 public List<Asset> findAll() {
+			 assDoa = new AssetDao();
+		  return assDoa.listAsset();
 		 }
 
 }

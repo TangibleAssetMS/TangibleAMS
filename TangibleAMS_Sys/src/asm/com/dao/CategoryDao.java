@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.util.List;
 
@@ -60,4 +60,3 @@ public class CategoryDao {
     }
 
 }
-*/

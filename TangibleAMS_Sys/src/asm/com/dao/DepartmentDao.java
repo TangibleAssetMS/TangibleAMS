@@ -52,7 +52,7 @@ public class DepartmentDao {
 			
 				
 				public void updateDepartment(long id, String departmentName,
-						String abbreviationName, String description, List<Employee> employee) 
+						String abbreviationName, String description, Set<Employee> employee) 
 						{
 	
 		emf=DbHelper.provideFactory();

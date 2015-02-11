@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Asset;
-import asm.com.pojos.invoiceDetails;
+import asm.com.pojos.AssetinvoiceDetails;
 
 public class InvoiceDetailsDao {
 	
@@ -16,7 +16,7 @@ public class InvoiceDetailsDao {
 	EntityManager em = null;
 	
 	//for saving an Employee Account
-	public void saveInvoiceDetails(invoiceDetails invoicedetails){
+	public void saveInvoiceDetails(AssetinvoiceDetails invoicedetails){
 		emf = DbHelper.provideFactory();
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
@@ -24,11 +24,11 @@ public class InvoiceDetailsDao {
 		em.getTransaction().commit();
 		em.close();
 	}
-	public invoiceDetails searchinvoiceDetails(Long id){
+	public AssetinvoiceDetails searchinvoiceDetails(Long id){
 		emf=DbHelper.provideFactory();
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
-		invoiceDetails invoicedetails=em.find(invoiceDetails.class,id);
+		AssetinvoiceDetails invoicedetails=em.find(AssetinvoiceDetails.class,id);
 		return invoicedetails;
 	}
 	
@@ -43,7 +43,7 @@ public class InvoiceDetailsDao {
 		emf=DbHelper.provideFactory();
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
-		invoiceDetails invoicedetails=em.find(invoiceDetails.class,id);
+		AssetinvoiceDetails invoicedetails=em.find(AssetinvoiceDetails.class,id);
 		invoicedetails.setAsset(asset);
 		invoicedetails.setDescription(description);
 		invoicedetails.setQuantity(quantity);
@@ -54,13 +54,12 @@ public class InvoiceDetailsDao {
 	}
 
 	//for displaying
-		public List<invoiceDetails>listinvoiceDetails(){
+		public List<AssetinvoiceDetails>listinvoiceDetails(){
         emf=DbHelper.provideFactory();
         em=emf.createEntityManager();
-        TypedQuery<invoiceDetails> query=em.createQuery("Select b from invoiceDetails b",invoiceDetails.class);
-        List<invoiceDetails> invoiceDetailsList=query.getResultList();
+        TypedQuery<AssetinvoiceDetails> query=em.createQuery("Select b from invoiceDetails b",AssetinvoiceDetails.class);
+        List<AssetinvoiceDetails> invoiceDetailsList=query.getResultList();
         return invoiceDetailsList;
     }
 
 }
-*/

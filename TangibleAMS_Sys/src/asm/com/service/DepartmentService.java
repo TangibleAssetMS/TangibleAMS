@@ -13,9 +13,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.jpahiber.dao.CustomerDao;
-import com.jpahiber.pojos.Customer;
-
 import asm.com.dao.DepartmentDao;
 import asm.com.dao.EmployeeDao;
 import asm.com.pojos.Account;

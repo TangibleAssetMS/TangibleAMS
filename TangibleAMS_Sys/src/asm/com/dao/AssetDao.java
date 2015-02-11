@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.sql.Date;
 import java.util.List;
@@ -9,10 +9,10 @@ import javax.persistence.TypedQuery;
 
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Asset;
-*//**
+/**
  * @author Lwandle
  *
- *//*
+ */
 public class AssetDao {
 	
 	EntityManagerFactory emf = null;
@@ -69,4 +69,3 @@ public class AssetDao {
         return assetList;
     }
 }
-*/

@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 
 import java.util.List;
@@ -39,8 +39,8 @@ public class AssetStatusDao {
 	
 			
 				
-				public void updateAsset(long id,List<Asset> asset, String statusName, String description) 
-						{
+	public void updateAsset(long id,Set<Asset> asset, String statusName, String description) 
+	{
 	
 		emf=DbHelper.provideFactory();
 		em=emf.createEntityManager();
@@ -64,4 +64,3 @@ public class AssetStatusDao {
     }
 
 }
-*/

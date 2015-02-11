@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,9 +42,9 @@ public class Invoice implements Serializable {
  @Column(name = "tblInvoice_Description")
  private String invoiceDescription;
 
- @OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
- private Set<Asset> asset;
- 
+ @OneToMany()
+ private Set<AssetinvoiceDetails> assetinvoiceDetails;
+	
  @ManyToOne()
  @JoinColumn(name="manufacturer")
  private Manufacturer manufacturer;
@@ -61,50 +60,33 @@ public class Invoice implements Serializable {
  * @param invoiceDescription
  * @param asset
  * @param manufacturer
- *//*
-public Invoice(int invoiceId, Date orderDate, Date deliveryDate,
-		String invoiceDescription, Set<Asset> asset, Manufacturer manufacturer) {
-	super();
-	this.invoiceId = invoiceId;
-	this.orderDate = orderDate;
-	this.deliveryDate = deliveryDate;
-	this.invoiceDescription = invoiceDescription;
-	this.asset = asset;
-	this.manufacturer = manufacturer;
-}
+ */
 
 
-
-*//**
- * @return the asset
- *//*
-public Set<Asset> getAsset() {
-	return asset;
-}
-
-
-
-*//**
- * @param asset the asset to set
- *//*
-public void setAsset(Set<Asset> asset) {
-	this.asset = asset;
-}
-
-
-
-*//**
+/**
  * @return the manufacturer
- *//*
+ */
 public Manufacturer getManufacturer() {
 	return manufacturer;
 }
 
 
 
-*//**
+public Invoice(Date orderDate, Date deliveryDate, String invoiceDescription,
+		Set<AssetinvoiceDetails> assetinvoiceDetails, Manufacturer manufacturer) {
+	super();
+	this.orderDate = orderDate;
+	this.deliveryDate = deliveryDate;
+	this.invoiceDescription = invoiceDescription;
+	this.assetinvoiceDetails = assetinvoiceDetails;
+	this.manufacturer = manufacturer;
+}
+
+
+
+/**
  * @param manufacturer the manufacturer to set
- *//*
+ */
 public void setManufacturer(Manufacturer manufacturer) {
 	this.manufacturer = manufacturer;
 }
@@ -143,5 +125,17 @@ public int getInvoiceId() {
   this.invoiceDescription = invoiceDescription;
  }
 
+
+
+public Set<AssetinvoiceDetails> getAssetinvoiceDetails() {
+	return assetinvoiceDetails;
 }
-*/
+
+
+
+public void setAssetinvoiceDetails(Set<AssetinvoiceDetails> assetinvoiceDetails) {
+	this.assetinvoiceDetails = assetinvoiceDetails;
+}
+
+ 
+}

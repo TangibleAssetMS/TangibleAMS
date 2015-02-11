@@ -37,7 +37,7 @@ public class Room {
 		//Relationships
 		
 		@ManyToOne()
-		@JoinColumn(name="department_id")
+		@JoinColumn(name="departmentId")
 		private Department department;
 
 		@OneToMany(mappedBy = "room",cascade = CascadeType.ALL)

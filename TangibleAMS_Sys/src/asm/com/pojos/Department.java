@@ -37,22 +37,22 @@ public class Department {
 	
 	//Relationships
 	@OneToMany(mappedBy = "department")
-	private List<Employee> employee;
+	private Set<Employee> employee;
 	
 	@OneToMany(mappedBy = "department")
 	private Set<Room> room;
 
-
-
+	
 	public Department(String departmentName, String abbreviationName,
-			String description) {
+			String description, Set<Employee> employee, Set<Room> room) {
 		super();
 		this.departmentName = departmentName;
 		this.abbreviationName = abbreviationName;
 		this.description = description;
-		
-
+		this.employee = employee;
+		this.room = room;
 	}
+
 	public Department()
 	{
 		
@@ -125,14 +125,14 @@ public class Department {
 	/**
 	 * @return the employee
 	 */
-	public List<Employee> getEmployee() {
+	public Set<Employee> getEmployee() {
 		return employee;
 	}
 
 	/**
 	 * @param employee the employee to set
 	 */
-	public void setEmployee(List<Employee> employee) {
+	public void setEmployee(Set<Employee> employee) {
 		this.employee = employee;
 	}
 

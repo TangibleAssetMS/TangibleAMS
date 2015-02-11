@@ -1,6 +1,7 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +40,7 @@ public class InsuranceDao {
 				
 				public void updateInsurance(String insureName, String webSiteLink, String contactName,
 						long phone, String address, String city, String email, long fax,
-						String description, Asset asset) 
+						String description,Set<Asset> asset) 
 						{
 	
 		emf=DbHelper.provideFactory();
@@ -73,4 +74,3 @@ public class InsuranceDao {
     }
 
 }
-*/

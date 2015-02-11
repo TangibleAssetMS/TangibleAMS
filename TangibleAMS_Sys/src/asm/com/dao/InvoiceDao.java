@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Asset;
+import asm.com.pojos.AssetinvoiceDetails;
 import asm.com.pojos.Invoice;
 import asm.com.pojos.Manufacturer;
 
@@ -41,7 +42,7 @@ public class InvoiceDao {
 			
 				
 				public void updateInvoice(int invoiceId, Date orderDate, Date deliveryDate,
-						String invoiceDescription, Set<Asset> asset, Manufacturer manufacturer) 
+						String invoiceDescription, Set<AssetinvoiceDetails> assetDetails, Manufacturer manufacturer) 
 						{
 	
 		emf=DbHelper.provideFactory();
@@ -50,7 +51,7 @@ public class InvoiceDao {
 		Invoice invoice=em.find(Invoice.class,invoiceId);
 		invoice.setDeliveryDate(deliveryDate);
 		invoice.setInvoiceDescription(invoiceDescription);
-		invoice.setAsset(asset);
+		invoice.setAssetinvoiceDetails(assetDetails);
 		invoice.setManufacturer(manufacturer);
 		
 
@@ -69,4 +70,3 @@ public class InvoiceDao {
     }
 
 }
-*/

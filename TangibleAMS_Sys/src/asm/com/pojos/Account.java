@@ -19,7 +19,7 @@ public class Account implements Serializable{
 
 	@Id
 	@OneToOne()
-	@JoinColumn(name="employeeId")
+	@JoinColumn(name="emp_Id")
 	private Employee employee;
 
 	@Column(name="User_name")
@@ -36,6 +36,14 @@ public class Account implements Serializable{
 	@Column(name="isActive")
 	private boolean isActive;
 
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	public Account()
 	{

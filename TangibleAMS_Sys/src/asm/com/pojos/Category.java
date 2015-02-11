@@ -1,7 +1,9 @@
-/*package asm.com.pojos;
+package asm.com.pojos;
 
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Category {
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		@Column(name="number_OrCode")
 		private long numberOrCode;
+		
 		//@XmlAttribute
 		@Column(name="category_Name")
 		private String categoryName;
@@ -28,15 +31,22 @@ public class Category {
 		private String description;
 		
 		//Relationships
-		@OneToMany()
-		private List<Asset> asset;
+		@OneToMany(cascade = CascadeType.ALL,mappedBy="category" )
+		private Set<Asset> asset;
 
-		public Category(String categoryName, String description,List<Asset> asset) {
+		public Category()
+		{}
+		
+
+		public Category(String categoryName, String description,
+				Set<Asset> asset) {
 			super();
 			this.categoryName = categoryName;
 			this.description = description;
 			this.asset = asset;
 		}
+
+
 
 		public long getNumberOrCode() {
 			return numberOrCode;
@@ -62,13 +72,12 @@ public class Category {
 			this.description = description;
 		}
 
-		public List<Asset> getAsset() {
+		public Set<Asset> getAsset() {
 			return asset;
 		}
 
-		public void setAsset(List<Asset> asset) {
+		public void setAsset(Set<Asset> asset) {
 			this.asset = asset;
 		}
 		
 }
-*/

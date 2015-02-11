@@ -1,4 +1,4 @@
-/*package asm.com.dao;
+package asm.com.dao;
 
 import java.util.List;
 import java.util.Set;
@@ -71,4 +71,3 @@ public class ManufacturerDao {
 
 
 }
-*/

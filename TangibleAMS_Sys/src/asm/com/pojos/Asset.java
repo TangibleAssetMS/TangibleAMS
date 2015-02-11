@@ -1,15 +1,9 @@
 package asm.com.pojos;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Set;
 
-
-
-
-
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -85,6 +79,9 @@ public class Asset {
 	@Column(name="warrantly_Type")
 	private String warrantlyType;
 
+	@OneToMany()
+	 private Set<AssetinvoiceDetails> assetinvoiceDetails;
+	
 	//Relationships
 	//joining Asset table with Room table
 	@ManyToOne()
@@ -98,29 +95,61 @@ public class Asset {
 	
 	//joining Asset table with Manufacture table
 	@ManyToOne()
-	@JoinColumn(name="manuFacturer")
+	@JoinColumn(name="manufacturer_Id")
 	private Manufacturer manufacturer;
 			
-	//joining InvoiceDS table with Asset table
-	@ManyToOne()
-	@JoinColumn(name = "invoiceId")
-	private Invoice invoice;
 	
 	@ManyToOne()
+	@JoinColumn(name ="insurerId")
 	private Insurance insurance;
 
 	@ManyToOne()
+	@JoinColumn(name ="number_OrCode")
 	private Category category;
 		
+	public Asset()
+	{}
+	
+	public Asset(String assetName, String assetModelNo, String serialNum,
+		float amountPaid, String color, float currentValue, String description,
+		int numberOfYearToUse, Date purchasedDate, double size,
+		float valueToSellWaste, Date warrantyExpire, String warrantlyType,
+		Set<AssetinvoiceDetails> assetinvoiceDetails, Room room,
+		AssetStatus assetstatus, Manufacturer manufacturer,
+		Insurance insurance, Category category) {
+	super();
+	this.assetName = assetName;
+	this.assetModelNo = assetModelNo;
+	this.serialNum = serialNum;
+	this.amountPaid = amountPaid;
+	this.color = color;
+	this.currentValue = currentValue;
+	this.description = description;
+	this.numberOfYearToUse = numberOfYearToUse;
+	this.purchasedDate = purchasedDate;
+	this.size = size;
+	this.valueToSellWaste = valueToSellWaste;
+	this.warrantyExpire = warrantyExpire;
+	this.warrantlyType = warrantlyType;
+	this.assetinvoiceDetails = assetinvoiceDetails;
+	this.room = room;
+	this.assetstatus = assetstatus;
+	this.manufacturer = manufacturer;
+	this.insurance = insurance;
+	this.category = category;
+	}
+
+	public Set<AssetinvoiceDetails> getInvoiceDetails() {
+		return assetinvoiceDetails;
+	}
+	
+	public void setInvoiceDetails(Set<AssetinvoiceDetails> assetinvoiceDetails) {
+		this.assetinvoiceDetails = assetinvoiceDetails;
+	}
 
 	public long getAssetId() {
 		return assetId;
 	}
-
-	
-
-
-
 
 	public void setAssetId(long assetId) {
 		this.assetId = assetId;
@@ -239,7 +268,6 @@ public class Asset {
 	}
 
 
-
 	/**
 	 * @return the assetstatus
 	 */
@@ -255,7 +283,6 @@ public class Asset {
 	}
 
 	
-
 	/**
 	 * @return the manufacturer
 	 */
@@ -284,6 +311,16 @@ public class Asset {
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+
+
+	public Insurance getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(Insurance insurance) {
+		this.insurance = insurance;
 	}
 	
 	

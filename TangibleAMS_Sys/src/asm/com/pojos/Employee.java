@@ -99,12 +99,19 @@ public class Employee {
 		 * @param department
 		 * @param account
 		 */
-		public Employee(String empIDNum,String empName,
-				String empSurname, String empTitle, Date birthDate,
-				String address, String city, String homePhone, String cellPhone,
-				String email, String role, Department department) {
+		
+		/**
+		 * @return the empId
+		 */
+		public long getEmpId() {
+			return empId;
+		}
+
+		public Employee(String empIDNum, String empName, String empSurname,
+				String empTitle, Date birthDate, String address, String city,
+				String homePhone, String cellPhone, String email, String role,
+				Department department, Account account) {
 			super();
-			
 			this.empIDNum = empIDNum;
 			this.empName = empName;
 			this.empSurname = empSurname;
@@ -117,14 +124,7 @@ public class Employee {
 			this.email = email;
 			this.role = role;
 			this.department = department;
-		
-		}
-
-		/**
-		 * @return the empId
-		 */
-		public long getEmpId() {
-			return empId;
+			this.account = account;
 		}
 
 		/**

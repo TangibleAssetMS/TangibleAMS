@@ -1,9 +1,13 @@
-/*package asm.com.pojos;
+package asm.com.pojos;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,8 +18,9 @@ public class Insurance {
 	//@XmlAttribute
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="_quantity")
-	private long quantity;
+	@Column(name="insurerId")
+	private int insurerId;
+	
 	//@XmlAttribute
 	@Column(name="insure_Name")
 	private String insureName;
@@ -45,13 +50,12 @@ public class Insurance {
 	private String description;
 	
 	//Relationships
-	@OneToMany()
-	@JoinColumn(name="asset_Id")
-	Asset asset;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "insurance")
+	private Set<Asset> asset;
 
 	
 
-	*//**
+	/**
 	 * @param insureName
 	 * @param webSiteLink
 	 * @param contactName
@@ -62,10 +66,15 @@ public class Insurance {
 	 * @param fax
 	 * @param description
 	 * @param asset
-	 *//*
+	 */
+	
+	public Insurance()
+	{}
+	
+
 	public Insurance(String insureName, String webSiteLink, String contactName,
 			long phone, String address, String city, String email, long fax,
-			String description, Asset asset) {
+			String description, Set<Asset> asset) {
 		super();
 		this.insureName = insureName;
 		this.webSiteLink = webSiteLink;
@@ -78,6 +87,15 @@ public class Insurance {
 		this.description = description;
 		this.asset = asset;
 	}
+
+	public int getInsurerId() {
+		return insurerId;
+	}
+
+	public void setInsurerId(int insurerId) {
+		this.insurerId = insurerId;
+	}
+
 
 	public String getInsureName() {
 		return insureName;
@@ -151,13 +169,15 @@ public class Insurance {
 		this.description = description;
 	}
 
-	public Asset getAsset() {
+	public Set<Asset> getAsset() {
 		return asset;
 	}
 
-	public void setAsset(Asset asset) {
+
+	public void setAsset(Set<Asset> asset) {
 		this.asset = asset;
 	}
+
+	
 	
 }
-*/

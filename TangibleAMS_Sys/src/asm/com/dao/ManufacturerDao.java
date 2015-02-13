@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Asset;
+import asm.com.pojos.Department;
 import asm.com.pojos.Invoice;
 import asm.com.pojos.Manufacturer;
 
@@ -68,6 +69,16 @@ public class ManufacturerDao {
         List<Manufacturer> manufacturerList=query.getResultList();
         return manufacturerList;
     }
+		//for deleting
+		public void deleteManufacturer(Long id){
+			emf=DbHelper.provideFactory();
+			em=emf.createEntityManager();
+			em.getTransaction().begin();
+			Manufacturer manufac=em.find(Manufacturer.class,id);
+			em.remove(manufac);
+			em.getTransaction().commit();
+			em.close();
+		}
 
 
 }

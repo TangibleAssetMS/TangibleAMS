@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Asset;
+import asm.com.pojos.Department;
 import asm.com.pojos.Insurance;
 
 public class InsuranceDao {
@@ -37,9 +38,9 @@ public class InsuranceDao {
 	//for updating
 	
 			
-				
-				public void updateInsurance(String insureName, String webSiteLink, String contactName,
-						long phone, String address, String city, String email, long fax,
+		@SuppressWarnings("unchecked")
+		public void updateInsurance(int id,String insureName, String webSiteLink, String contactName,
+			long phone, String address, String city, String email, long fax,
 						String description,Set<Asset> asset) 
 						{
 	
@@ -58,12 +59,21 @@ public class InsuranceDao {
 		insurance.setPhone(phone);
 		insurance.setDescription(description);
 		
-
-		
+		asset = (Set<Asset>) em.find(Asset.class,id);	
 		em.getTransaction().commit();
 		em.close();
 	}
 
+		//for deleting
+		public void deleteInsurance(int id){
+			emf=DbHelper.provideFactory();
+			em=emf.createEntityManager();
+			em.getTransaction().begin();
+			Insurance insure=em.find(Insurance.class,id);
+			em.remove(insure);
+			em.getTransaction().commit();
+			em.close();
+		}
 	//for displaying
 		public List<Insurance>listInsurance(){
         emf=DbHelper.provideFactory();

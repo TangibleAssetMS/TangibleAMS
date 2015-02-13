@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 import asm.com.dbHelper.DbHelper;
 import asm.com.pojos.Department;
 import asm.com.pojos.Employee;
+import asm.com.pojos.Room;
 
 /**
  * @author Lwandle
@@ -49,21 +50,21 @@ public class DepartmentDao {
 	
 	//for updating
 	
-			
-				
-				public void updateDepartment(long id, String departmentName,
-						String abbreviationName, String description, Set<Employee> employee) 
+		@SuppressWarnings("unchecked")
+		public void updateDepartment(long id, String departmentName,
+						String abbreviationName, String description, Set<Employee> employee, Set<Room> room) 
 						{
 	
 		emf=DbHelper.provideFactory();
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
-		Department department=em.find(Department.class,id);
 		
+		Department department=em.find(Department.class,id);
 		department.setDepartmentName(departmentName);
 		department.setAbbreviationName(abbreviationName);
 		department.setDescription(description);
-		department.setEmployee(employee);
+		
+		room= (Set<Room>) em.find(Room.class,id);
 		
 		em.getTransaction().commit();
 		em.close();

@@ -2,6 +2,7 @@ package asm.com.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,6 +19,7 @@ import asm.com.dao.EmployeeDao;
 import asm.com.pojos.Account;
 import asm.com.pojos.Department;
 import asm.com.pojos.Employee;
+import asm.com.pojos.Room;
 
 @Path("/Department")
 public class DepartmentService {
@@ -51,19 +53,11 @@ public class DepartmentService {
 		@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	
 		
-		public void update(@PathParam("department_Id") long empId,@PathParam("empIDNum") String empIDNum,@PathParam("empName") String empName,@PathParam("empSurname") 
-        String empSurname,@PathParam("empTitle") String empTitle,@PathParam("birthDate") Date birthDate,
-        @PathParam("address")String address,@PathParam("city")String city,
-        @PathParam("homePhone")String homePhone,@PathParam("cellPhone")String cellPhone,
-        @PathParam("email")String email,@PathParam("role")String role,
-        @PathParam("department")Department department,@PathParam("account")Account account){
-		
-//			(String departmentName, String abbreviationName,
-//					String description)
-			
-			empDoa = new EmployeeDao();
+		public void update(@PathParam("department_Id") long department_Id,@PathParam("departmentName") String departmentName,@PathParam("abbreviationName") String abbreviationName,@PathParam("description")String description, 
+        @PathParam("employee")Set<Employee> employee,@PathParam("room")Set<Room> room){
 
-			empDoa.updateEmployee(empId, empIDNum, empName, empSurname, empTitle, birthDate, address, city, homePhone, cellPhone, email, role, department,account);
+			deptDao = new DepartmentDao();
+			deptDao.updateDepartment(department_Id, departmentName, abbreviationName, description, employee, room);
 		}
 		//
 		//for deleting
@@ -72,9 +66,9 @@ public class DepartmentService {
 		@Path("{id}")
 		@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 		@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-		public void remove(@PathParam("empId") Long empId) {
-			empDoa = new EmployeeDao();
-			empDoa.deleteEmployee(empId);
+		public void remove(@PathParam("department_Id") Long department_Id) {
+			deptDao = new DepartmentDao();
+			deptDao.deleteDepartment(department_Id);
 		}
 
 		

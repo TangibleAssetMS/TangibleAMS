@@ -58,8 +58,6 @@ public class EmployeeService {
 	        @PathParam("email")String email,@PathParam("role")String role,
 	        @PathParam("department")Department department,@PathParam("account")Account account){
 			
-			/*String adminName, String adminSurname,
-		String adminEmail, String adminPassword, String adminIdNr*/
 				
 				empDoa = new EmployeeDao();
 
